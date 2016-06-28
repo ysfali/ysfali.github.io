@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <!--<link rel="shortcut icon" href="icons/icon.ico"/>-->
+    <title>Yusuf Ali-Web Developer-Interactive Resume</title>
+    <link rel="icon" sizes="192x192" href="icons/y2.png">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Including materialise framework and glyphicons of bootstrap framework-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!--Including fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <!--Including google map API-->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places" async defer></script>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body unresolved>
+    <div id="main">
+
+      <!--Start Page of the Resume containing a parallax image-->
+      <div class="parallax-container center" id="start">
+        <div  class="parallax">    
+          <img src="images/parallax2.svg" alt="background image"/>
+        </div>  
+        <a href="#profile" class="scroll-down">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </a>
+      </div>
+          
+      <div class="contentContainer" id="profile-style">
+        <!--Profile Information-->
+        <div class="container scrollspy" id="profile">
+          <div id="details" class="row"></div>
+        </div>
+      </div>
+
+      <!--work experience goes here-->
+      <div class="contentContainer scrollspy" id="work-style">
+        <div class="container center">
+          <h2 class="center pad-top headings">Work Experience</h2>
+          <hr/>
+          <div id="workExperience"></div>
+        </div>
+      </div>
+        
+      <!--Education information goes here-->
+      <div class="contentContainer scrollspy" id="education-style">
+        <div class="container">
+          <h2 class="center pad-top headings">Education</h2>
+          <hr/>
+          <div id="education"></div>
+        </div>
+      </div>
+
+      <!--Abilities/Skill Information goes here-->
+      <div class="contentContainer scrollspy" id="abilities-style">
+        <div class="container" id="abilities">
+        </div>
+      </div>
+
+      <!--Project Information Goes here-->
+      <div class="contentContainer scrollspy" id="projects-style">
+        <div class="container center">
+          <h2 class="center pad-top headings">Projects</h2>
+          <hr/>
+          <div id="projects"></div>
+        </div>
+      </div>
+          
+      <!--Location Information goes here-->     
+      <div class="contentContainer scrollspy" id="map-style">
+        <div class="container" id="mapDiv">
+          <h2 class="center pad-top headings">Where I've Lived and Worked</h2>
+          <hr/>
+        </div>
+      </div>
+    </div>
+
+    <!--Right Side Floating Nav for dekstop screens-->
+    <div id="float">
+      <ul class="sections toc" >
+        <li id="profile-tab"><a href="#profile">Profile</a></li>
+        <li id="work-tab"><a href="#work-style">Work</a></li>
+        <li id="education-tab"><a href="#education-style">Education</a></li>
+        <li id="ability-tab"><a href="#abilities-style">Abilities</a></li>
+        <li id="projects-tab"><a href="#projects-style">Project</a></li>
+        <li id="map-tab"><a href="#map-style">Location</a></li>
+      </ul>
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="js/helper.js"></script>
+    <script src="js/resumeBuilder.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js" defer></script>
+
+    <script type="text/javascript">
+
+
+      //Checking for empty divs
+      if($("#details").is(':empty')) {
+        $("#profile").hide();
+        $("#profile-tab").hide();
+        $("#profile-style").removeClass("scrollspy");
+      }
+
+      if($("#workExperience").is(':empty')) {
+        $("#work-style").hide();
+        $("#work-tab").hide();
+        $("#work-style").removeClass("scrollspy");
+      }
+
+      if($("#education").is(':empty')) {
+        $("#education-style").hide();
+        $("education-tab").hide();
+        $("#education-style").removeClass("scrollspy");
+      }
+
+      if($("#abilities").length===0) {
+        $("#abilities-style").hide();
+        $("#ability-tab").hide();
+        $("#abilities-style").removeClass("scrollspy");
+      }
+
+      if($("#projects").is(':empty')) {
+        $("#projects-style").hide();
+        $("#projects-tab").hide();
+        $("#projects-style").removeClass("scrollspy");
+      }
+
+      //materialise parallax
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
+
+      //setting minimum height equal to viewport height for class contentContainer
+      $(".contentContainer").css("min-height",$(window).height());
+      
+      $(document).ready(function(){
+        $('.scrollspy').scrollSpy();
+      });
+
+      //Smooth scrolling script
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({scrollTop: target.offset().top}, 1000);
+              return false;
+            }
+          }
+        });
+      });
+
+      
+    </script>
+  </body>
+</html>
