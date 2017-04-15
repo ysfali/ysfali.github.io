@@ -213,7 +213,7 @@ var projects = {
             "dates":"2015",
             "description":"Weather forcasting",
             "image":"images/weather.jpg",
-            "url":"http://217.199.187.199/claystick.com/php/weather/index.php"
+            "url":"http://ysfatweb.me/Weather/index.php"
         },
         {
             "title":"Secret Diary",
